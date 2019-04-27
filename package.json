@@ -1,0 +1,31 @@
+{
+  "name": "relude-fetch",
+  "version": "0.1.0",
+  "description": "Relude interop library for the fetch API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andywhite37/relude-fetch.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andywhite37/relude-fetch/issues"
+  },
+  "homepage": "https://github.com/andywhite37/relude-fetch#readme",
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world",
+    "watch": "bsb -make-world -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "bs-fetch": "~0.3.1",
+    "relude": "github:reazen/relude#b1760c9"
+  },
+  "devDependencies": {
+    "bs-fetch": "~0.3.1",
+    "bs-platform": "~5.0.3",
+    "isomorphic-fetch": "~2.2.1",
+    "relude": "github:reazen/relude#b1760c9"
+  }
+}
