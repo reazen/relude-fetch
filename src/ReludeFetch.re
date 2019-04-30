@@ -1,46 +1,33 @@
-module IO = {
-  type error = Js.Promise.error;
-
-  type t('a) = Relude.IO.t('a, error);
-
-  type response = t(Fetch.response);
-  type arrayBuffer = t(Fetch.arrayBuffer);
-  type blob = t(Fetch.blob);
-  type formData = t(Fetch.formData);
-  type json = t(Js.Json.t);
-  type text = t(string);
-
-  type mapError('e) = error => 'e;
-};
+// Wrap all bs-fetch functions that return Js.Promise.t('a) to instead return Relude.IO.t('a, Js.Promise.error).
+// Add the extra suspendIO in each case to ensure that Promises are not eagerly executed.
 
 module Body = {
-  type t = Fetch.Body.t;
-
-  let arrayBuffer: t => IO.arrayBuffer =
+  let arrayBuffer:
+    Fetch.Body.t => Relude.IO.t(Fetch.arrayBuffer, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.arrayBuffer(body))
       );
 
-  let blob: t => IO.blob =
+  let blob: Fetch.Body.t => Relude.IO.t(Fetch.blob, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.blob(body))
       );
 
-  let formData: t => IO.formData =
+  let formData: Fetch.Body.t => Relude.IO.t(Fetch.formData, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.formData(body))
       );
 
-  let json: t => IO.json =
+  let json: Fetch.Body.t => Relude.IO.t(Js.Json.t, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.json(body))
       );
 
-  let text: t => IO.text =
+  let text: Fetch.Body.t => Relude.IO.t(string, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.text(body))
@@ -48,33 +35,33 @@ module Body = {
 };
 
 module Request = {
-  type t = Fetch.Request.t;
-
-  let arrayBuffer: t => IO.arrayBuffer =
+  let arrayBuffer:
+    Fetch.Request.t => Relude.IO.t(Fetch.arrayBuffer, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Request.arrayBuffer(body))
       );
 
-  let blob: t => IO.blob =
+  let blob: Fetch.Request.t => Relude.IO.t(Fetch.blob, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Request.blob(body))
       );
 
-  let formData: t => IO.formData =
+  let formData:
+    Fetch.Request.t => Relude.IO.t(Fetch.formData, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Request.formData(body))
       );
 
-  let json: t => IO.json =
+  let json: Fetch.Request.t => Relude.IO.t(Js.Json.t, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Request.json(body))
       );
 
-  let text: t => IO.text =
+  let text: Fetch.Request.t => Relude.IO.t(string, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Request.text(body))
@@ -82,55 +69,59 @@ module Request = {
 };
 
 module Response = {
-  type t = Fetch.Response.t;
-
-  let arrayBuffer: t => IO.arrayBuffer =
+  let arrayBuffer:
+    Fetch.Response.t => Relude.IO.t(Fetch.arrayBuffer, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Response.arrayBuffer(body))
       );
 
-  let blob: t => IO.blob =
+  let blob: Fetch.Response.t => Relude.IO.t(Fetch.blob, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Response.blob(body))
       );
 
-  let formData: t => IO.formData =
+  let formData:
+    Fetch.Response.t => Relude.IO.t(Fetch.formData, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Response.formData(body))
       );
 
-  let json: t => IO.json =
+  let json: Fetch.Response.t => Relude.IO.t(Js.Json.t, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Response.json(body))
       );
 
-  let text: t => IO.text =
+  let text: Fetch.Response.t => Relude.IO.t(string, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Response.text(body))
       );
 };
 
-let fetch: string => IO.response =
+let fetch: string => Relude.IO.t(Fetch.response, Js.Promise.error) =
   url => Relude.IO.suspendIO(() => Relude.Js.Promise.toIO(Fetch.fetch(url)));
 
-let fetchWithInit: (string, Fetch.requestInit) => IO.response =
+let fetchWithInit:
+  (string, Fetch.requestInit) => Relude.IO.t(Fetch.response, Js.Promise.error) =
   (url, init) =>
     Relude.IO.suspendIO(() =>
       Relude.Js.Promise.toIO(Fetch.fetchWithInit(url, init))
     );
 
-let fetchWithRequest: Fetch.request => IO.response =
+let fetchWithRequest:
+  Fetch.request => Relude.IO.t(Fetch.response, Js.Promise.error) =
   request =>
     Relude.IO.suspendIO(() =>
       Relude.Js.Promise.toIO(Fetch.fetchWithRequest(request))
     );
 
-let fetchWithRequestInit: (Fetch.request, Fetch.requestInit) => IO.response =
+let fetchWithRequestInit:
+  (Fetch.request, Fetch.requestInit) =>
+  Relude.IO.t(Fetch.response, Js.Promise.error) =
   (request, init) =>
     Relude.IO.suspendIO(() =>
       Relude.Js.Promise.toIO(Fetch.fetchWithRequestInit(request, init))
