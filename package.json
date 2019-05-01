@@ -21,13 +21,13 @@
   "peerDependencies": {
     "bs-abstract": "^0.16.0",
     "bs-fetch": "~0.3.1",
-    "relude": "github:reazen/relude#b1760c9"
+    "relude": "~0.5.0"
   },
   "devDependencies": {
     "bs-abstract": "^0.16.0",
     "bs-fetch": "~0.3.1",
     "bs-platform": "~5.0.3",
     "isomorphic-fetch": "~2.2.1",
-    "relude": "github:reazen/relude#b1760c9"
+    "relude": "~0.5.0"
   }
 }
