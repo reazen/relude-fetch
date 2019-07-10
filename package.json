@@ -17,8 +17,8 @@
     "clean": "bsb -clean-world",
     "cleanbuild": "npm run clean && npm run build",
     "watch": "bsb -make-world -w",
-    "test": "npm run cleanbuild",
-    "cleantest": "npm run clean && npm run test"
+    "test": "node lib/js/examples/Demo.bs.js",
+    "cleantest": "npm run cleanbuild && npm run test"
   },
   "peerDependencies": {
     "bs-abstract": "^0.17.0",
