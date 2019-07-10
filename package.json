@@ -21,15 +21,15 @@
     "cleantest": "npm run clean && npm run test"
   },
   "peerDependencies": {
-    "bs-abstract": "^0.16.0",
-    "bs-fetch": "~0.3.1",
+    "bs-abstract": "^0.17.0",
+    "bs-fetch": "~0.5.0",
     "relude": "~0.7.0"
   },
   "devDependencies": {
-    "bs-abstract": "^0.16.0",
+    "bs-abstract": "^0.17.0",
     "bs-fetch": "~0.3.1",
-    "bs-platform": "~5.0.3",
+    "bs-platform": "~5.0.6",
     "isomorphic-fetch": "~2.2.1",
-    "relude": "~0.7.0"
+    "relude": "~0.18.0"
   }
 }

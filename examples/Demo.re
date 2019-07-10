@@ -23,9 +23,9 @@ module Error = {
   };
 };
 
-module InfixMonad = Relude.IO.Infix.Monad(Error.Type);
+module IOE = Relude.IO.WithError(Error.Type);
 
-let (>>=) = InfixMonad.(>>=);
+let (>>=) = IOE.Infix.(>>=);
 
 let _ =
   ReludeFetch.fetch("https://postman-echo.com/get?foo1=bar1&foo2=bar2")
