@@ -15,5 +15,4 @@ Js.Promise.error)` values.  Using `IO` rather than `Promise` makes error
 handling 100% more explicit, allows for better composability with other
 effect and error types, and unlocks the full power of monads!
 
-See the [demo](https://github.com/reazen/relude-fetch/blob/master/examples/Demo.re) for
-example usage.
+See the [tests](https://github.com/reazen/relude-fetch/blob/master/__tests__/ReludeFetch_test.re) for example usage.
