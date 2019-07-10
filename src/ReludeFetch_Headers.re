@@ -1,3 +1,6 @@
+/**
+Contains headers for a HTTP request or response
+*/
 type t =
   | Headers(Js.Dict.t(string));
 
@@ -28,7 +31,7 @@ let toHeadersInit: t => Fetch.HeadersInit.t =
   (Headers(dict)) => Fetch.HeadersInit.makeWithDict(dict);
 
 /**
-Converts a key/value into a header set
+Converts a key/value pair into a header set
 */
 let fromKeyValue: (Js.Dict.key, string) => t =
   (key, value) => Headers(Js.Dict.fromList([(key, value)]));
@@ -46,12 +49,12 @@ let authorizationBearer: string => t =
   token => fromKeyValue("Authorization", "Bearer " ++ token);
 
 /**
-Creates an Accept: application/json header
+Creates an "Accept: application/json" header
 */
 let acceptJson: t = fromKeyValue("Accept", "application/json");
 
 /**
-Creates a Content-Type: application/json header
+Creates a "Content-Type: application/json" header
 */
 let contentTypeJson: t = fromKeyValue("Content-Type", "application/json");
 

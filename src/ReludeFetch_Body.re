@@ -30,33 +30,32 @@ module Content = {
 // these functions into the Request and Response modules
 
 module Raw = {
-  let asArrayBuffer:
+  let arrayBuffer:
     Fetch.Body.t => Relude.IO.t(Fetch.arrayBuffer, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.arrayBuffer(body))
       );
 
-  let asBlob: Fetch.Body.t => Relude.IO.t(Fetch.blob, Js.Promise.error) =
+  let blob: Fetch.Body.t => Relude.IO.t(Fetch.blob, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.blob(body))
       );
 
-  let asFormData:
-    Fetch.Body.t => Relude.IO.t(Fetch.formData, Js.Promise.error) =
+  let formData: Fetch.Body.t => Relude.IO.t(Fetch.formData, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.formData(body))
       );
 
-  let asJson: Fetch.Body.t => Relude.IO.t(Js.Json.t, Js.Promise.error) =
+  let json: Fetch.Body.t => Relude.IO.t(Js.Json.t, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.json(body))
       );
 
-  let asText: Fetch.Body.t => Relude.IO.t(string, Js.Promise.error) =
+  let text: Fetch.Body.t => Relude.IO.t(string, Js.Promise.error) =
     body =>
       Relude.IO.suspendIO(() =>
         Relude.Js.Promise.toIO(Fetch.Body.text(body))
