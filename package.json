@@ -13,23 +13,31 @@
   },
   "homepage": "https://github.com/andywhite37/relude-fetch#readme",
   "scripts": {
-    "build": "bsb -make-world",
     "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
     "cleanbuild": "npm run clean && npm run build",
-    "watch": "bsb -make-world -w",
-    "test": "node lib/js/examples/Demo.bs.js",
-    "cleantest": "npm run cleanbuild && npm run test"
+    "test": "jest",
+    "cleantest": "npm run cleanbuild && npm run test",
+    "watch": "bsb -make-world -w"
   },
   "peerDependencies": {
     "bs-abstract": "^0.17.0",
     "bs-fetch": "~0.5.0",
-    "relude": "~0.7.0"
+    "relude": "~0.18.0"
   },
   "devDependencies": {
+    "@glennsl/bs-jest": "~0.4.8",
     "bs-abstract": "^0.17.0",
-    "bs-fetch": "~0.3.1",
+    "bs-fetch": "~0.5.0",
     "bs-platform": "~5.0.6",
     "isomorphic-fetch": "~2.2.1",
+    "jest": "~24.8.0",
     "relude": "~0.18.0"
+  },
+  "jest": {
+    "verbose": false,
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

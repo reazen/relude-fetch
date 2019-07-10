@@ -7,7 +7,7 @@
       "subdirs": true
     },
     {
-      "dir": "examples",
+      "dir": "__tests__",
       "subdirs": true,
       "type": "dev"
     }
@@ -21,6 +21,9 @@
     "bs-abstract",
     "bs-fetch",
     "relude"
+  ],
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest",
   ],
   "warnings": {
     "error": "+101"
