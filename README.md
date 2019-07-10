@@ -1,5 +1,8 @@
 # relude-fetch
 
+[![CircleCI](https://img.shields.io/circleci/project/github/reazen/relude-fetch/master.svg)](https://circleci.com/gh/reazen/relude-fetch)
+[![npm](https://img.shields.io/npm/v/relude-fetch.svg)](https://www.npmjs.com/package/relude-fetch)
+
 [Relude](https://github.com/reazen/relude) interop library for the Browser
 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 This can also be used in Node.js using a polyfill like
