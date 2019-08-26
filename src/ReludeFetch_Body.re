@@ -18,12 +18,22 @@ module Type = {
 module Content = {
   type t =
     | String(string)
-    | Json(Js.Json.t);
+    | Json(Js.Json.t)
+    | Blob(Fetch.blob)
+    | BufferSource(Fetch.bufferSource)
+    | FormData(Fetch.formData)
+    | UrlSearchParams(Fetch.urlSearchParams);
 
   let toBodyInit: t => Fetch.bodyInit =
     fun
     | String(str) => Fetch.BodyInit.make(str)
-    | Json(json) => Fetch.BodyInit.make(Js.Json.stringify(json));
+    | Json(json) => Fetch.BodyInit.make(Js.Json.stringify(json))
+    | Blob(blob) => Fetch.BodyInit.makeWithBlob(blob)
+    | BufferSource(bufferSource) =>
+      Fetch.BodyInit.makeWithBufferSource(bufferSource)
+    | FormData(formData) => Fetch.BodyInit.makeWithFormData(formData)
+    | UrlSearchParams(urlSearchParams) =>
+      Fetch.BodyInit.makeWithUrlSearchParams(urlSearchParams);
 };
 
 // These are probably not really needed - the Body module exists in bs-fetch as a mechanism to include
