@@ -1,5 +1,8 @@
 {
   "name": "relude-fetch",
+  "reason": {
+    "react-jsx": 3
+  },
   "version": "0.1.0",
   "sources": [
     {
@@ -8,6 +11,11 @@
     },
     {
       "dir": "__tests__",
+      "subdirs": true,
+      "type": "dev"
+    },
+    {
+      "dir": "examples",
       "subdirs": true,
       "type": "dev"
     }
@@ -24,6 +32,8 @@
   ],
   "bs-dev-dependencies": [
     "@glennsl/bs-jest",
+    "reason-react",
+    "relude-reason-react"
   ],
   "warnings": {
     "error": "+101"

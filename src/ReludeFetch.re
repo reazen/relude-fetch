@@ -1,5 +1,6 @@
 module Body = ReludeFetch_Body;
 module Error = ReludeFetch_Error;
+module FormData = ReludeFetch_FormData;
 module Headers = ReludeFetch_Headers;
 module Request = ReludeFetch_Request;
 module Response = ReludeFetch_Response;

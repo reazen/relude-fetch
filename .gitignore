@@ -8,3 +8,7 @@ node_modules/
 # Project
 lib/bs/
 *.bs.js
+
+# Parcel
+dist/
+.cache/

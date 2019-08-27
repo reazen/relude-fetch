@@ -21,17 +21,23 @@ effect and error types, and unlocks the full power of monads!
 
 See the [tests](https://github.com/reazen/relude-fetch/blob/master/__tests__/ReludeFetch_test.re) for example usage.
 
+Also see the [demo](https://github.com/reazen/relude-fetch/blob/master/examples/demo) for real-world usage, such as file uploads.
+
 ## Developer info
 
 ### Scripts
 
 ```
+# Normal development scripts
 > npm run clean
 > npm run build
 > npm run cleanbuild
 > npm run test
 > npm run cleantest
 > npm run watch
+
+# Run the demo project via parcel
+> npm run demo
 ```
 
 ### Publishing to npm
