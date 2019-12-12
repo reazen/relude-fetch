@@ -31,7 +31,7 @@ module API = {
     // This call fails, but you can inspect the request in the dev tools to see that it has the
     // multi-part encoded form data.
     ReludeFetch.fetchWith(
-      ~method_=Fetch.Post,
+      ~method__=Fetch.Post,
       ~body=FormData(formData),
       "/fake-upload-file",
     )
@@ -72,36 +72,39 @@ let onSubmit = (send: action => unit, event: ReactEvent.Form.t): unit => {
 [@react.component]
 let make = () => {
   let (state, send) =
-    ReludeReact.Reducer.useReducer(initialState, (action, state) =>
-      switch (action) {
-      | SetFile(file) =>
-        Update({
-          file: Some(file),
-          message: Some("Selected file: " ++ (file |> File.name)),
-        })
+    ReludeReact.Reducer.useReducer(
+      (state, action) =>
+        switch (action) {
+        | SetFile(file) =>
+          Update({
+            file: Some(file),
+            message: Some("Selected file: " ++ (file |> File.name)),
+          })
 
-      | Submit =>
-        switch (state.file) {
-        | None => Update({...state, message: Some("No file selected")})
-        | Some(file) =>
-          UpdateWithIO(
-            {
-              ...state,
-              message: Some("Uploading file: " ++ (file |> File.name)),
-            },
-            API.uploadFile(file)
-            |> IO.bimap(_ => SubmitSuccess, error => SubmitFailure(error)),
-          )
-        }
+        | Submit =>
+          switch (state.file) {
+          | None => Update({...state, message: Some("No file selected")})
+          | Some(file) =>
+            UpdateWithIO(
+              {
+                ...state,
+                message: Some("Uploading file: " ++ (file |> File.name)),
+              },
+              API.uploadFile(file)
+              |> IO.bimap(_ => SubmitSuccess, error => SubmitFailure(error)),
+            )
+          }
 
-      | SubmitSuccess => Update({...state, message: Some("Upload success!")})
+        | SubmitSuccess =>
+          Update({...state, message: Some("Upload success!")})
 
-      | SubmitFailure(error) =>
-        Update({
-          ...state,
-          message: Some("Upload error: " ++ API.Error.show(error)),
-        })
-      }
+        | SubmitFailure(error) =>
+          Update({
+            ...state,
+            message: Some("Upload error: " ++ API.Error.show(error)),
+          })
+        },
+      initialState,
     );
 
   <div>

@@ -5,10 +5,11 @@ node_modules/
 .bsb.lock
 .merlin
 
-# Project
-lib/bs/
-*.bs.js
-
 # Parcel
 dist/
 .cache/
+
+# Project
+lib/bs/
+*.bs.js
+/docs/coverage

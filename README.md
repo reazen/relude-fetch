@@ -1,6 +1,6 @@
 # relude-fetch
 
-[![CircleCI](https://img.shields.io/circleci/project/github/reazen/relude-fetch/master.svg)](https://circleci.com/gh/reazen/relude-fetch)
+[![GitHub CI](https://img.shields.io/github/workflow/status/reazen/relude-fetch/CI/master)](https://github.com/reazen/relude-fetch/actions)
 [![npm](https://img.shields.io/npm/v/relude-fetch.svg)](https://www.npmjs.com/package/relude-fetch)
 
 ## Overview
