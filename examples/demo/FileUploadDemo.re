@@ -31,7 +31,7 @@ module API = {
     // This call fails, but you can inspect the request in the dev tools to see that it has the
     // multi-part encoded form data.
     ReludeFetch.fetchWith(
-      ~method__=Fetch.Post,
+      ~method_=Fetch.Post,
       ~body=FormData(formData),
       "/fake-upload-file",
     )
