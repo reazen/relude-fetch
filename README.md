@@ -25,6 +25,17 @@ Also see the [demo](https://github.com/reazen/relude-fetch/blob/master/examples/
 
 ## Developer info
 
+### Installation
+
+Dependencies of this library are listed as `peerDepenencies` to avoid issues with multiple version
+errors with npm's installation methodology combined with BuckleScript.
+
+```
+> npm install --save bs-bastet relude bs-fetch relude-fetch
+
+# Add bs-bastet, relude, bs-fetch, and relude-fetch to your bsconfig.json
+```
+
 ### Scripts
 
 ```
