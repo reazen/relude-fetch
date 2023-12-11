@@ -13,36 +13,25 @@
   },
   "homepage": "https://github.com/reazen/relude-fetch#readme",
   "scripts": {
-    "clean": "bsb -clean-world",
-    "build": "bsb -make-world",
-    "watch": "bsb -make-world -w",
     "test": "jest",
     "coverage": "jest --coverage --coverage-reporters=lcov --coverage-reporters=text --coverage-directory ./docs/coverage",
-    "cleanbuild": "npm run clean && npm run build",
-    "cleantest": "npm run cleanbuild && npm run test",
     "cleancoverage": "npm run cleanbuild && npm run coverage",
     "demo": "parcel examples/demo/index.html"
   },
-  "peerDependencies": {
-    "bs-bastet": "^1.2.5",
-    "bs-fetch": "~0.5.2",
-    "relude": "~0.62.0"
-  },
   "devDependencies": {
-    "@glennsl/bs-jest": "~0.5.1",
-    "bs-bastet": "^1.2.5",
-    "bs-fetch": "~0.5.2",
-    "bs-platform": "~7.2.2",
+    "jest": "^26.5.2",
+    "@testing-library/jest-dom": "^5.10.0",
     "isomorphic-fetch": "~2.2.1",
     "parcel-bundler": "~1.12.4",
     "reason-react": "~0.7.1",
-    "relude": "~0.62.0",
     "relude-reason-react": "~0.10.0"
   },
   "jest": {
     "verbose": false,
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "_build",
+      "_opam"
     ]
   }
 }
