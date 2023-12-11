@@ -1,0 +1,7 @@
+(melange.emit
+ (target output)
+ (alias test)
+ (libraries melange melange-jest.jest bastet relude reludeFetch)
+ (preprocess
+  (pps melange.ppx))
+ (module_systems commonjs))

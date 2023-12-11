@@ -20,7 +20,6 @@
 (bug_reports https://github.com/reazen/relude-fetch/issues)
 
 (package
- (allow_empty)
  (name relude-fetch)
  (synopsis "Relude Fetch")
  (description "Relude interop library for the fetch API")

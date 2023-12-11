@@ -1,5 +1,5 @@
 (library
- (name relude_fetch)
+ (name reludeFetch)
  (public_name relude-fetch)
  (libraries bastet relude melange-fetch)
  (modes melange)
