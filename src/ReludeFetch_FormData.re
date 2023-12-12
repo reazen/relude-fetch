@@ -17,10 +17,10 @@
 module File = {
   type t;
 
-  [@bs.get] external name: t => string = "name";
-  [@bs.get] external type_: t => string = "type";
-  [@bs.get] external size: t => float = "size";
-  //[@bs.get] external preview: t => string = "";
+  [@mel.get] external name: t => string = "name";
+  [@mel.get] external type_: t => string = "type";
+  [@mel.get] external size: t => float = "size";
+  //[@mel.get] external preview: t => string = "";
 
   /**
    * Unsafely coerces this value into a value of a desired type.  Useful for passing
@@ -63,7 +63,7 @@ type t = Fetch.formData;
  * let formData = FormData.make();
  * ```
  */
-[@bs.new]
+[@mel.new]
 external make: unit => t = "FormData";
 
 /**
@@ -75,7 +75,7 @@ external make: unit => t = "FormData";
  * FormData.appendObject(formData, "myKey", myObject); // mutates
  * ```
  */
-[@bs.send]
+[@mel.send]
 external appendObject: (t, string, Js.t({..})) => unit = "append";
 
 /**
@@ -87,7 +87,7 @@ external appendObject: (t, string, Js.t({..})) => unit = "append";
  * FormData.appendBlob(formData, "myKey", myBlob); // mutates
  * ```
  */
-[@bs.send]
+[@mel.send]
 external appendBlob: (t, string, Blob.t) => unit = "append";
 
 /**
@@ -98,7 +98,7 @@ external appendBlob: (t, string, Blob.t) => unit = "append";
  * FormData.appendString(formData, "myKey", "myValue"); // mutates
  * ```
  */
-[@bs.send]
+[@mel.send]
 external appendString: (t, string, string) => unit = "append";
 
 /**
@@ -123,35 +123,35 @@ external appendString: (t, string, string) => unit = "append";
  * );
  * ```
  */
-[@bs.send]
+[@mel.send]
 external appendFile: (t, string, File.t) => unit = "append";
 
 /**
  * Sets an object value in the FormData, overwriting any existing key
  */
-[@bs.send]
+[@mel.send]
 external setObject: (t, string, Js.t({..})) => unit = "set";
 
 /**
  * Sets an blob value in the FormData, overwriting any existing key
  */
-[@bs.send]
+[@mel.send]
 external setBlob: (t, string, Blob.t) => unit = "set";
 
 /**
  * Sets a string value in the FormData, overwriting any existing key
  */
-[@bs.send]
+[@mel.send]
 external setString: (t, string, string) => unit = "set";
 
 /**
  * Sets a File.t value in the FormData, overwriting any existing key
  */
-[@bs.send]
+[@mel.send]
 external setFile: (t, string, File.t) => unit = "set";
 
 /**
  * Deletes a key from the FormData
  */
-[@bs.send]
+[@mel.send]
 external delete: (t, string) => unit = "delete";

@@ -38,7 +38,7 @@ let decodeError = error => DecodeError(error);
 let show: ('innerDecodeError => string, t('innerDecodeError)) => string =
   (showDecodeError, error) =>
     switch (error) {
-    | FetchError({url}) => "Fetch error: " ++ url
+    | FetchError({url, _}) => "Fetch error: " ++ url
 
     | StatusError({url, actual, min, max}) =>
       "HTTP status error: "
@@ -50,7 +50,7 @@ let show: ('innerDecodeError => string, t('innerDecodeError)) => string =
       ++ " and "
       ++ Relude.Int.toString(max)
 
-    | ContentTypeError({url, expected}) =>
+    | ContentTypeError({url, expected, _}) =>
       "Content type error: "
       ++ url
       ++ ": Expected content type: "

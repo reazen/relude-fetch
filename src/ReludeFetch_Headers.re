@@ -61,7 +61,7 @@ let contentTypeJson: t = fromKeyValue("Content-Type", "application/json");
 /**
 Semigroup instance for Headers
 */
-module Semigroup: BsBastet.Interface.SEMIGROUP with type t = t = {
+module Semigroup: Bastet.Interface.SEMIGROUP with type t = t = {
   type nonrec t = t;
   let append = combine;
 };
@@ -69,7 +69,7 @@ module Semigroup: BsBastet.Interface.SEMIGROUP with type t = t = {
 /**
 Monoid instance for Headers
 */
-module Monoid: BsBastet.Interface.MONOID with type t = t = {
+module Monoid: Bastet.Interface.MONOID with type t = t = {
   include Semigroup;
   let empty = empty;
 };

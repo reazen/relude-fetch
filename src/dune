@@ -1,0 +1,7 @@
+(library
+ (name reludeFetch)
+ (public_name relude-fetch)
+ (libraries bastet relude melange-fetch)
+ (modes melange)
+ (preprocess
+  (pps melange.ppx)))
